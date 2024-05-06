@@ -45,3 +45,14 @@ jobs:
         path: ${{steps.sign_app.outputs.signedFile}}
         if-no-files-found: error
         retention-days: 20
+
+    - name: Create Pre-release
+      id: create_prerelease
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Silence ${{ github.ref }}
+        draft: false
+        prerelease: true
