@@ -41,7 +41,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Signed app bundle
+        name: "Silence_${{ github.ref }}.apk"
         path: ${{steps.sign_app.outputs.signedFile}}
         if-no-files-found: error
         retention-days: 20
